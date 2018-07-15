@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'promos',
     'rosetta',
     'redis',
+    'users',
 ]
 
 MIDDLEWARE = [

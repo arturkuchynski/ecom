@@ -28,9 +28,10 @@ urlpatterns = i18n_patterns(
     path(_('orders/'), include('orders.urls', namespace='orders')),
     path(_('payment/'), include('payment.urls', namespace='payment')),
     path(_('promo_codes/'), include('promos.urls', namespace='promo_codes')),
-    path('rosetta/', include('rosetta.urls')),
+    path(_('rosetta/'), include('rosetta.urls')),
     path('', include('bookstore.urls', namespace='bookstore')),
-    path('paypal/', include('paypal.standard.ipn.urls')),
+    path(_('paypal/'), include('paypal.standard.ipn.urls')),
+    path('user/', include(('users.urls', 'users'), namespace='users')),
 )
 
 if settings.DEBUG:
