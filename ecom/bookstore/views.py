@@ -39,6 +39,3 @@ def book_detail(request, id, slug):
                   locals())
 
 
-def home(request):
-    cart = Cart(request)
-    return render(request, 'shop/home.html', locals())

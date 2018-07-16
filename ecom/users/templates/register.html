@@ -4,7 +4,7 @@
 
     <h1 style="margin-top: 50px" class="text-center">Register</h1>
     <div class="col-md-6 offset-md-3">
-    <form method="POST" action="{% url 'user_register' %}">
+    <form method="POST" action="{% url 'users:user_register' %}">
         {% csrf_token %}
         {% if form.errors %}
             <div class="alert alert-warning alert-dismissable" role="alert">

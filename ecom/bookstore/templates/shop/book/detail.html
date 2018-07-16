@@ -1,4 +1,4 @@
-{% extends "shop/book/../base.html" %}
+{% extends "shop/base.html" %}
 {% load i18n %}
 {% load static %}
 
@@ -8,7 +8,7 @@
 
 {% block content %}
   <div class="book-detail">
-    <img src="{% if book.bookimage.image %}{{ book.bookimage.image.url }}{% else %}{% static "static_dev/img/no_image.png" %}{% endif %}">
+    <img src="{% if book.bookimage.image %}{{ book.bookimage.image.url }}{% else %}{% static "img/no_image.png" %}{% endif %}">
     <h1>{{ book.name }}</h1>
     <h2><a href="{{ book.genre.get_absolute_url }}">{{ book.genre }}</a></h2>
     <p class="price">${{ book.price }}</p>
