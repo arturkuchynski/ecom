@@ -1,36 +1,30 @@
 {% extends 'shop/base.html' %}
-
+{% load i18n %}
 {% block content %}
 
-    <h1 style="margin-top: 50px" class="text-center">Register</h1>
-    <div class="col-md-6 offset-md-3">
-    <form method="POST" action="{% url 'users:user_register' %}">
+<h1 style="margin-top: 50px" class="text-center">{% trans 'Register' %}</h1>
+<div class="col-md-6 offset-md-3">
+	<form method="POST" action="{% url 'users:user_register' %}">
         {% csrf_token %}
-        {% if form.errors %}
-            <div class="alert alert-warning alert-dismissable" role="alert">
-                <button class="close" data-dismiss="alert" >
-                    <small><sup>x</sup></small>
-                </button>
-            
-            {% for field in form %}
-                {% if field.errors %}
-                    {{field.errors}}
-                {% endif %}
-
-            {% endfor %}
-            </div>
-        {% endif %}
-        {% for field in form %}
-        <div class="fieldWrapper">
-            {{ field }}
-            <small class='form-text text-muted'><p>{{field.help_text|linebreaksbr}}</p></small>
-        </div>
-    {% endfor %}
-
-    <input type="submit" value="Register" class="btn btn-secondary">
-
-    </form>
-
-
-    </div>
+		{% if form.errors %}
+        <div class="alert alert-warning alert-dismissable" data-auto-dismiss="4000" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close" >
+                <span aria-hidden="true">&times;</span>
+            </button>
+			{% for field in form %}
+			{% if field.errors %}
+			{{field.errors}}
+			{% endif %}
+			{% endfor %}
+		</div>
+		{% endif %}
+		{% for field in form %}
+		<div class="fieldWrapper">
+			{% blocktrans %}{{ field }}{% endblocktrans %}
+			<small class='form-text text-muted'>{% blocktrans %}{{field.help_text|linebreaksbr}}{% endblocktrans %}</small>
+		</div>
+		{% endfor %}
+		<input type="submit" name="register" value="Register" class="btn btn-secondary">
+	</form>
+</div>
 {% endblock %}

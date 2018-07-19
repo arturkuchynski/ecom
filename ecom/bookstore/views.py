@@ -30,7 +30,7 @@ def book_detail(request, id, slug):
                              translations__slug=slug,
                              available=True)
 
-    cart_book_form = CartAddProductForm()
+    cart_add_form = CartAddProductForm()
     r = Recommender()
     recommended_books = r.suggest_books_for([book], 4)
 

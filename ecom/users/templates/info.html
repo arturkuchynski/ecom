@@ -1,19 +1,15 @@
 {% extends 'shop/base.html' %}
-
+{% load i18n %}
 {% block content %}
-
-    <h1 style="margin-top: 50px">Here we go!</h1>
-
+{% csrf_token %}
     {% if user.is_authenticated %}
-        <p>Name :{{ user.first_name }} {{ user.last_name }}</p>
-        <p>Username: {{ user.username }}</p>
-        <p>Password: {{ user.password }}</p>
-        <p>Email: {{ user.email }}</p>
-        <h2>{{ user.get_full_name }}</h2>
+        <h2>{% trans 'Your Profile' %}</h2>
+        <p>{% trans 'Username' %}: {{ user.username }}</p>
+        <p>{% trans 'Email' %}: {{ user.email }}</p>
+{#        <h2>{{ user.get_full_name }}</h2>#}
         <ul>
-          <li>Username: {{ user.username }}</li>
-          <li>Location: {{ user.profile.address }}</li>
-          <li>Birth Date: {{ user.profile.birth_date }}</li>
+            <li>{% trans 'Birth Date' %}: {{ user.profile.birth_date }}</li>
+            <li>{% trans 'Address' %}: {{ user.profile.address }}</li>
         </ul>
     {% endif %}
 

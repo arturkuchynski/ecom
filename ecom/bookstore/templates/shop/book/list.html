@@ -1,14 +1,14 @@
 {% extends "shop/base.html" %}
 {% load i18n %}
 {% load static %}
-
+{% csrf_token %}
 {% block title %}
   {% if genre %}{{ genre.name }}{% else %}{% trans "Products" %}{% endif %}
 {% endblock %}
 
 {% block content %}
   <div id="sidebar">
-    <h3>{% trans "Categories" %}</h3>
+    <h3>{% trans "Genres" %}</h3>
     <ul>
       <li {% if not genre %}class="selected"{% endif %}>
         <a href="{% url "bookstore:book_list" %}">{% trans "All" %}</a>

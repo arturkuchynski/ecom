@@ -87,8 +87,9 @@
     {% csrf_token %}
   </form>
   <p class="text-right">
-    <a href="{% url "bookstore:book_list" %}" class="button light">{% trans "Continue shopping" %}</a>
+    <a href="{% url "bookstore:book_list" %}" class="button light">{% csrf_token %}{% trans "Continue shopping" %}</a>
     <a href="{% url "orders:order_create" %}" class="button">
+        {% csrf_token %}
       {% trans "Checkout" %}
     </a>
   </p>

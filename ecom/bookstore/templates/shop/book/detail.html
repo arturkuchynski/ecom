@@ -1,7 +1,7 @@
 {% extends "shop/base.html" %}
 {% load i18n %}
 {% load static %}
-
+{% csrf_token %}
 {% block title %}
   {{ book.name }}
 {% endblock %}
@@ -13,7 +13,7 @@
     <h2><a href="{{ book.genre.get_absolute_url }}">{{ book.genre }}</a></h2>
     <p class="price">${{ book.price }}</p>
     <form action="{% url "cart:cart_add" book.id %}" method="post">
-      {{ cart_book_form }}
+      {{ cart_add_form }}
       {% csrf_token %}
       <input type="submit" value="{% trans "Add to cart" %}">
     </form>

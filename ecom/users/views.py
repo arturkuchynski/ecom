@@ -1,17 +1,23 @@
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm, PasswordChangeForm
-from django.contrib.auth import authenticate, login, logout, update_session_auth_hash
+from django.contrib.auth import authenticate, login, update_session_auth_hash
 from django.contrib import messages
+from django.contrib.auth.views import logout
 from django.contrib.auth.decorators import login_required
 from django.utils.translation import gettext_lazy as _
 from django.db import transaction
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, HttpResponseRedirect
+from django.views.decorators.csrf import ensure_csrf_cookie
+
 from .forms import *
-from  cart.cart import Cart
+from cart.cart import Cart
 
 
+@login_required(login_url='users:user_login')
 def info(request):
     cart = Cart(request)
-    return render(request, 'info.html', {'cart': cart})
+    user = request.user
+    return render(request, 'info.html', {'cart': cart, 'user': user})
+
 
 
 def user_login(request):
@@ -34,6 +40,7 @@ def user_login(request):
         return render(request, 'login.html', {'cart': cart})
 
 
+@login_required(login_url='users:user_login')
 def user_logout(request):
     logout(request)
     update_session_auth_hash(request, request.user)
@@ -41,11 +48,12 @@ def user_logout(request):
     return redirect('users:info')
 
 
+
 def user_register(request):
     cart = Cart(request)
 
     if request.method == "POST":
-        form = SignUpForm(request.POST)
+        form = RegisterForm(request.POST)
         if form.is_valid():
             form.save()
             username = form.cleaned_data['username']
@@ -55,7 +63,7 @@ def user_register(request):
             messages.success(request, 'You have been registered')
             return redirect('users:info')
     else:
-        form = SignUpForm()
+        form = RegisterForm()
 
     context = {'form': form, 'cart':cart}
     return render(request, 'register.html', context)
@@ -74,7 +82,7 @@ def edit_profile(request):
             # autofill data
             # form.username = form['username'].value() + form['username'].value()
 
-            messages.success(request, _('You have edited your profile'))
+            messages.success(request, 'You have edited your profile')
             return redirect('users:info')
 
     else:
@@ -89,6 +97,7 @@ def edit_profile(request):
     return render(request, 'edit.html', context)
 
 
+@login_required(login_url='users:user_login')
 def change_password(request):
     cart = Cart(request)
     if request.method == "POST":

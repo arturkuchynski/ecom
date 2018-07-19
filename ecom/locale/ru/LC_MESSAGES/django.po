@@ -1351,6 +1351,29 @@ msgstr "Промокод"
 msgid "Address:"
 msgstr "Адрес:"
 
+msgid "Email Address"
+msgstr "Email"
+
+
+msgid "Password"
+msgstr "Пароль"
+
+
+msgid "First Name"
+msgstr "Имя"
+
+
+msgid "Last Name"
+msgstr "Фамилия"
+
+
+msgid "Username"
+msgstr "Имя Пользователя"
+
+
+msgid "Confirm Password"
+msgstr "Введите пароль ещё раз"
+
 msgid "Your order"
 msgstr "Ваш заказ"
 
@@ -1455,15 +1478,35 @@ msgid "City"
 msgstr "Город"
 
 
-#: shop/templates/shop/base.html:7 shop/templates/shop/base.html:12
+#: shop/templates/shop/base.html
 msgid "My bookstore"
 msgstr "Мой магазин книг"
 
-#: shop/templates/shop/base.html:18
+#: shop/templates/shop/base.html
 msgid "Your cart"
 msgstr "Ваша корзина"
 
-#: shop/templates/shop/base.html:20
+# shop/templates/shop/base.html
+msgid "Log In"
+msgstr "Войти"
+
+msgid "Log Out"
+msgstr "Выйти"
+
+msgid "Register"
+msgstr "Зарегистрироваться"
+
+msgid "Your Profile"
+msgstr "Ваш Профиль"
+
+msgid "Edit Profile"
+msgstr "Редактировать профиль"
+
+msgid "Save"
+msgstr "Сохранить"
+
+
+#: shop/templates/shop/base.html
 #, python-format
 msgid ""
 "\n"
@@ -1476,7 +1519,7 @@ msgstr ""
 "                $%(total_price)s\n"
 "              "
 
-#: shop/templates/shop/base.html:26
+#: shop/templates/shop/base.html
 msgid "Your cart is empty."
 msgstr "Ваша корзина пуста"
 
@@ -1490,9 +1533,9 @@ msgid "Products"
 msgstr "Продукты"
 
 #: shop/templates/shop/book/list.html:11
-msgid "Categories"
-msgstr "Категории"
+msgid "Genres"
+msgstr "Жанры"
 
 #: shop/templates/shop/book/list.html:14
 msgid "All"
-msgstr "Все категории"
+msgstr "Все жанры"

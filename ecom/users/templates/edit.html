@@ -1,42 +1,37 @@
 {% extends 'shop/base.html' %}
-
-
+{% load i18n %}
 {% block content %}
 
-    <h1 style="margin-top: 50px" class="text-center">Edit profile</h1>
-    <div class="col-md-6 offset-md-3">
-    <form method="POST" action="{% url 'users:edit_profile' %}">
-        {% csrf_token %}
-
-    {% for form in forms %}
-        {% if form.errors %}
-            <div class="alert alert-warning alert-dismissable" role="alert">
-                <button class="close" data-dismiss="alert" >
-                    <small><sup>x</sup></small>
-                </button>
-            
-            {% for field in form %}
-                {% if field.errors %}
-                    {{field.errors}}
-                {% endif %}
-
-            {% endfor %}
-            </div>
-        {% endif %}
-        {% for field in form %}
-        {% if not field.is_hidden %}
-            <div class="fieldWrapper">
-                {{ field.label_tag }} {{ field }}
-                <small class='form-text text-muted'><p>{{field.help_text|linebreaksbr}}</p></small>
-            </div>
-        {% endif %}
-    {% endfor %}
-     {% endfor %}
-    
-    <input type="submit" value="Save" class="btn btn-secondary">
-    <p><small><a href="{% url 'users:change_password'  %}">Click Here</a> to Change Your Password</small></p>
-
-    </form>
-
-    </div>
+<h1 style="margin-top: 50px" class="text-center">{% blocktrans %}Edit profile{% endblocktrans %}</h1>
+<div class="col-md-6 offset-md-3">
+	<form method="POST" action="{% url 'users:edit_profile' %}">
+		{% csrf_token %}
+		{% for form in forms %}
+		{% if form.errors %}
+        <div class="alert alert-warning alert-dismissable" data-auto-dismiss="4000" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close" >
+                <span aria-hidden="true">&times;</span>
+            </button>
+			{% for field in form %}
+			{% if field.errors %}
+			{{field.errors}}
+			{% endif %}
+			{% endfor %}
+		</div>
+		{% endif %}
+		{% for field in form %}
+		{% if not field.is_hidden %}
+		<div class="fieldWrapper">
+			{% blocktrans %}{{ field.label_tag }} {{ field }}{% endblocktrans %}
+			<small class='form-text text-muted'>
+				{% blocktrans %}{{field.help_text|linebreaksbr}}{% endblocktrans %}
+			</small>
+		</div>
+		{% endif %}
+		{% endfor %}
+		{% endfor %}
+		<input type="submit" value="Save" class="btn btn-secondary">
+		<p><small><a href="{% url 'users:change_password'  %}">Click Here</a> to Change Your Password</small></p>
+	</form>
+</div>
 {% endblock %}

@@ -64,7 +64,7 @@ class Book(TranslatableModel):
     isbn = ISBNField(unique=True,
                      blank=True,
                      null=True,
-                     help_text='(ISBN is a ten or thirteen digit number used to '
+                     help_text='ISBN is a ten or thirteen digit number used to '
                                'identify books and book-like resources.')
 
     price = models.DecimalField(max_digits=9, decimal_places=2, default=0.00, validators=[MinValueValidator(0.00)])

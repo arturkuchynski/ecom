@@ -79,6 +79,8 @@ TEMPLATES = [
             'context_processors': [
                 'django.template.context_processors.debug',
                 'django.template.context_processors.request',
+                'django.template.context_processors.csrf',
+                'django.template.context_processors.i18n',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
             ],
@@ -131,6 +133,9 @@ LANGUAGE_CODE = 'en'
 LOCALE_PATHS = (
     os.path.join(BASE_DIR, 'locale/'),
 )
+
+LOGIN_REDIRECT_URL = 'bookstore:book_list'
+
 
 TIME_ZONE = 'UTC'
 

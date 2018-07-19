@@ -1,5 +1,9 @@
+from django.conf.urls.static import static
 from django.contrib import admin
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from django.urls import path, include
+
+from ecom import settings
 from . import views
 
 urlpatterns = [
@@ -11,3 +15,8 @@ urlpatterns = [
     path('edit-profile/', views.edit_profile, name="edit_profile"),
     path('register/', views.user_register, name="user_register"),
 ]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) \
+                   + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) \
+                   + staticfiles_urlpatterns()

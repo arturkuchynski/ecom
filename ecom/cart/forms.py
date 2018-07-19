@@ -6,7 +6,10 @@ class CartAddProductForm(forms.Form):
 
     quantity = forms.TypedChoiceField(choices=[(ch, str(ch)) for ch in range(1, 5)],
                                       coerce=int,
-                                      label=_('Quantity'))
+                                      label=_('Quantity'),
+                                      widget=forms.NumberInput(attrs={'class': 'form-control'}))
+
+
 
     update = forms.BooleanField(required=False,
                                 initial=False,
