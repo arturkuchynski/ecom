@@ -19,7 +19,9 @@ def info(request):
     return render(request, 'info.html', {'cart': cart, 'user': user})
 
 
-
+# TODO: fix csrf_token issue caused by i18n wile language is switched on 
+# the base navbar
+# fix corresponding login/logout bug 
 def user_login(request):
     cart = Cart(request)
     if request.method == "POST":
