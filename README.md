@@ -29,6 +29,7 @@ This project is a prototype of real-world bookstore solution powered by Django 2
 - [ ] JavaScript (AJAX, jQuery, Carousel, etc.) for navigation, item search, animation and cart details
 - [ ] Responsive Design
 - [ ] Landing Page
+- [ ] Book Catalog pages filters (by Author, Year, etc.)
 - [ ] Store recommendations and e-mail notifications in db
 - [ ] Wish List
 - [ ] ...
