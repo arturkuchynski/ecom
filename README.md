@@ -24,7 +24,7 @@ This project is a prototype of real-world bookstore solution powered by Django 2
 
 ### Could have
 - [ ] User email verification 
-- [ ] Custom User Profile (bio, date of birth, address, bought books, reviews)
+- [x] Custom User Profile (bio, date of birth, address, bought books, reviews)
 - [x] Email notifications (Redis tasks)
 - [ ] JavaScript (AJAX, jQuery, Carousel, etc.) for navigation, item search, animation and cart details
 - [ ] Responsive Design
@@ -35,6 +35,6 @@ This project is a prototype of real-world bookstore solution powered by Django 2
 - [ ] ...
 
 ### Won't have
-- [ ] Book Author Model
+- [ ] Book Author Model (But It can be great solution)
 - [ ] Forum
 - [ ] Online Consulting Service
