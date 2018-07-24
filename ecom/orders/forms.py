@@ -9,7 +9,7 @@ class OrderCreateForm(forms.ModelForm):
     postal_code = RUPostalCodeField(label="",
                                     widget=forms.TextInput(attrs={'class': 'form-control',
                                                                   'placeholder': _('Postal Code')}))
-    phone_number = PhoneNumberField(label="+375",
+    phone_number = PhoneNumberField(label="",
                                     widget=forms.NumberInput(attrs={'class': 'form-control',
                                                                   'placeholder': _('Phone number')}))
 

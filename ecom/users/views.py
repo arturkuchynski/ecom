@@ -1,15 +1,11 @@
-from django.contrib.auth.forms import UserCreationForm, UserChangeForm, PasswordChangeForm
-from django.contrib.auth import authenticate, login, update_session_auth_hash
 from django.contrib import messages
-from django.contrib.auth.views import logout
+from django.contrib.auth import authenticate, login, update_session_auth_hash
 from django.contrib.auth.decorators import login_required
-from django.utils.translation import gettext_lazy as _
+from django.contrib.auth.views import logout
 from django.db import transaction
-from django.shortcuts import render, redirect, HttpResponseRedirect
-from django.views.decorators.csrf import ensure_csrf_cookie
-
-from .forms import *
+from django.shortcuts import render, redirect
 from cart.cart import Cart
+from .forms import *
 
 
 @login_required(login_url='users:user_login')
@@ -19,9 +15,7 @@ def info(request):
     return render(request, 'info.html', {'cart': cart, 'user': user})
 
 
-# TODO: fix csrf_token issue caused by i18n wile language is switched on 
-# the base navbar
-# fix corresponding login/logout bug 
+# TODO: fix csrf_token issue when site language is switched
 def user_login(request):
     cart = Cart(request)
     if request.method == "POST":
@@ -42,7 +36,6 @@ def user_login(request):
         return render(request, 'login.html', {'cart': cart})
 
 
-@login_required(login_url='users:user_login')
 def user_logout(request):
     logout(request)
     update_session_auth_hash(request, request.user)
@@ -50,10 +43,8 @@ def user_logout(request):
     return redirect('users:info')
 
 
-
 def user_register(request):
     cart = Cart(request)
-
     if request.method == "POST":
         form = RegisterForm(request.POST)
         if form.is_valid():
@@ -67,7 +58,7 @@ def user_register(request):
     else:
         form = RegisterForm()
 
-    context = {'form': form, 'cart':cart}
+    context = {'form': form, 'cart': cart}
     return render(request, 'register.html', context)
 
 
@@ -113,6 +104,5 @@ def change_password(request):
     else:
         form = ChangeUserPasswordForm(user=request.user)
 
-    context = {'form': form,'cart':cart}
+    context = {'form': form, 'cart': cart}
     return render(request, 'change_password.html', context)
-

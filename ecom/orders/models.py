@@ -6,10 +6,11 @@ from django.core.validators import MinValueValidator, \
 from promos.models import PromoCode
 from django.utils.translation import gettext_lazy as _
 from phonenumber_field.modelfields import PhoneNumberField
+from users.models import Profile
 
 
 class Order(models.Model):
-
+    profile = models.ForeignKey(Profile, on_delete=models.CASCADE, null=True, default=None)
     first_name = models.CharField(_('first name'), max_length=50)
     last_name = models.CharField(_('last name'), max_length=50)
     email = models.EmailField(_('e-mail'))
@@ -19,7 +20,6 @@ class Order(models.Model):
     city = models.CharField(_('city'), max_length=100)
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
-    method = models
     paid = models.BooleanField(default=False)
     promo_code = models.ForeignKey(PromoCode,
                                    related_name='orders',

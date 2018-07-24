@@ -6,11 +6,13 @@
         <h2>{% trans 'Your Profile' %}</h2>
         <p>{% trans 'Username' %}: {{ user.username }}</p>
         <p>{% trans 'Email' %}: {{ user.email }}</p>
-{#        <h2>{{ user.get_full_name }}</h2>#}
-        <ul>
-            <li>{% trans 'Birth Date' %}: {{ user.profile.birth_date }}</li>
-            <li>{% trans 'Address' %}: {{ user.profile.address }}</li>
-        </ul>
+        <p>{% trans 'Gender' %}: {{ user.profile.gender }}</p>
+        <p>{% trans 'Birth Date' %}: {{ user.profile.birth_date }}</p>
+        <p>{% trans 'Postal Code' %}: {{ user.profile.postal_code }}</p>
+        <p>{% trans 'Address' %}: {{ user.profile.address }}</p>
+        <p>{% trans 'City' %}: {{ user.profile.city }}</p>
+        <p>{% trans 'Phone Number' %}: {{ user.profile.phone_number }}</p>
+
     {% endif %}
 
 {% endblock %}

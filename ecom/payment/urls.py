@@ -10,5 +10,6 @@ urlpatterns = [
     path(_('process/'), views.payment_process, name='process'),
     path(_('done/'), views.payment_done, name='done'),
     path(_('canceled/'), views.payment_canceled, name='canceled'),
-    path(_('delivery/'), views.delivery, name='process'),
+    # TODO: delivery page
+    # path(_('delivery/'), views.delivery, name='delivery'),
 ]
