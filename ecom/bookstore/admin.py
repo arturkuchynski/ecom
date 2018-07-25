@@ -1,9 +1,10 @@
 from django.contrib import admin
+from django.contrib.admin import StackedInline
 from .models import *
 from parler.admin import TranslatableAdmin, TranslatableStackedInline
 
 
-class BookImageInline(TranslatableStackedInline):
+class BookImageInline(StackedInline):
     model = BookImage
     max_num = 1
     # set limit for extra entries

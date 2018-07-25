@@ -3,14 +3,10 @@ from django.contrib.auth import authenticate, login, update_session_auth_hash
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.views import logout
 from django.db import transaction
-<<<<<<< HEAD
 from django.middleware.csrf import get_token
 from django.shortcuts import render, redirect
 from django.views.decorators.csrf import csrf_protect
-
-=======
 from django.shortcuts import render, redirect
->>>>>>> 19c0624... edit user profile
 from cart.cart import Cart
 from .forms import *
 
@@ -23,11 +19,7 @@ def info(request):
     return render(request, 'info.html', {'cart': cart, 'user': user})
 
 
-# TODO: fix csrf_token issue when site language is switched
-<<<<<<< HEAD
 @csrf_protect
-=======
->>>>>>> 19c0624... edit user profile
 def user_login(request):
     print(get_token(request))
     cart = Cart(request)
@@ -48,25 +40,16 @@ def user_login(request):
     else:
         return render(request, 'login.html', {'cart': cart})
 
-<<<<<<< HEAD
-@csrf_protect
-=======
 
->>>>>>> 19c0624... edit user profile
+@csrf_protect
 def user_logout(request):
     print(get_token(request))
     logout(request)
     update_session_auth_hash(request, request.user)
     messages.success(request, 'You have been logged out')
-<<<<<<< HEAD
     return redirect('bookstore:book_list')
 
-@csrf_protect
-=======
-    return redirect('users:info')
 
-
->>>>>>> 19c0624... edit user profile
 def user_register(request):
     print(get_token(request))
     cart = Cart(request)
