@@ -3,20 +3,26 @@ from django.contrib.auth import authenticate, login, update_session_auth_hash
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.views import logout
 from django.db import transaction
+from django.middleware.csrf import get_token
 from django.shortcuts import render, redirect
+from django.views.decorators.csrf import csrf_protect
+
 from cart.cart import Cart
 from .forms import *
 
 
 @login_required(login_url='users:user_login')
 def info(request):
+    print(get_token(request))
     cart = Cart(request)
     user = request.user
     return render(request, 'info.html', {'cart': cart, 'user': user})
 
 
 # TODO: fix csrf_token issue when site language is switched
+@csrf_protect
 def user_login(request):
+    print(get_token(request))
     cart = Cart(request)
     if request.method == "POST":
         username = request.POST.get('username', None)
@@ -35,15 +41,17 @@ def user_login(request):
     else:
         return render(request, 'login.html', {'cart': cart})
 
-
+@csrf_protect
 def user_logout(request):
+    print(get_token(request))
     logout(request)
     update_session_auth_hash(request, request.user)
     messages.success(request, 'You have been logged out')
-    return redirect('users:info')
+    return redirect('bookstore:book_list')
 
-
+@csrf_protect
 def user_register(request):
+    print(get_token(request))
     cart = Cart(request)
     if request.method == "POST":
         form = RegisterForm(request.POST)
@@ -61,7 +69,7 @@ def user_register(request):
     context = {'form': form, 'cart': cart}
     return render(request, 'register.html', context)
 
-
+@csrf_protect
 @login_required(login_url='users:user_login')
 @transaction.atomic
 def edit_profile(request):
@@ -90,8 +98,10 @@ def edit_profile(request):
     return render(request, 'edit.html', context)
 
 
+@csrf_protect
 @login_required(login_url='users:user_login')
 def change_password(request):
+    print(get_token(request))
     cart = Cart(request)
     if request.method == "POST":
         form = ChangeUserPasswordForm(data=request.POST, user=request.user)

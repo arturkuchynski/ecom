@@ -27,7 +27,6 @@ class BookAdmin(TranslatableAdmin):
                     'available', 'created', 'updated']
     list_filter = ['available', 'created', 'updated']
     list_editable = ['price', 'available']
-
     inlines = [BookImageInline]
 
     def get_prepopulated_fields(self, request, obj=None):

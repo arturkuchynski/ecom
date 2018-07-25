@@ -30,6 +30,7 @@
 					<a class="nav-item nav-link languages" href="/{{ language.code }}/" {% if language.code == LANGUAGE_CODE %} class="selected"{% endif %}>
 					 {% csrf_token %}
                     {{ language.name_local }}
+
 					</a>
 					{% endfor %}
 					<div class="nav-item cart">
@@ -49,7 +50,6 @@
 					</div>
 					{% if user.is_authenticated %}
 					<a class="nav-item nav-link" href="{% url 'users:user_logout' %}">{% trans "Log out" %}</a>
-					<a class="nav-item nav-link" href="{% url 'users:user_register' %}">{% trans "Register" %}</a>
 					<a class="nav-item nav-link" href="{% url 'users:edit_profile' %}">{% trans "Edit Profile" %}</a>
 					<a class="nav-item nav-link" href="{% url 'users:info' %}">{% trans "Your Profile" %}</a>
 					{% else %}
@@ -60,7 +60,6 @@
 			</div>
 		</nav>
 		<div class="container"  id="content">
-
          {% if messages %}
             {% for message in messages %}
                 <div class="alert alert-warning alert-dismissable fade in show" data-auto-dismiss="4000" role="alert">

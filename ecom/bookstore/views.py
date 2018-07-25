@@ -3,8 +3,10 @@ from .models import Genre, Book
 from cart.forms import CartAddProductForm
 from .recommender import Recommender
 from cart.cart import Cart
+from django.views.decorators.csrf import csrf_protect
+from django.middleware.csrf import get_token
 
-
+@csrf_protect
 def book_list(request, genre_slug=None):
     cart = Cart(request)
     genre = None
