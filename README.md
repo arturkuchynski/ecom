@@ -3,7 +3,7 @@
 
 This project is a prototype of real-world bookstore solution powered by Django 2.
 
-### Using MoSCoW method of development prioritization of the dev state of the project, requirements can be displayed as follows:
+### Using MoSCoW method of development prioritization of the dev state of the project, I define project requirements for myself as follows:
 
 ### Must have
 - [x] Bookstore Models Hierarchy
@@ -24,17 +24,18 @@ This project is a prototype of real-world bookstore solution powered by Django 2
 
 ### Could have
 - [ ] User email verification 
-- [ ] Custom User Profile (bio, date of birth, address, bought books, reviews)
+- [x] Custom User Profile (bio, date of birth, address, bought books, reviews)
 - [x] Email notifications (Redis tasks)
 - [ ] JavaScript (AJAX, jQuery, Carousel, etc.) for navigation, item search, animation and cart details
 - [ ] Responsive Design
 - [ ] Landing Page
+- [ ] Book Catalog pages filters (by Author, Year, etc.)
 - [ ] Store recommendations and e-mail notifications in db
 - [ ] Wish List
 - [ ] ...
 - [ ] ...
 
 ### Won't have
-- [ ] Book Author Model
+- [ ] Book Author Model (But It can be great solution)
 - [ ] Forum
 - [ ] Online Consulting Service
