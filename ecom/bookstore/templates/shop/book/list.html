@@ -3,7 +3,7 @@
 {% load static %}
 {% csrf_token %}
 {% block title %}
-  {% if genre %}{{ genre.name }}{% else %}{% trans "Products" %}{% endif %}
+  {% if genre %}{{ genre.title }}{% else %}{% trans "Books" %}{% endif %}
 {% endblock %}
 
 {% block content %}
@@ -13,15 +13,15 @@
       <li {% if not genre %}class="selected"{% endif %}>
         <a href="{% url "bookstore:book_list" %}">{% trans "All" %}</a>
       </li>
-      {% for c in categories %}
-        <li {% if genre.slug == c.slug %}class="selected"{% endif %}>
-          <a href="{{ c.get_absolute_url }}">{{ c.name }}</a>
+      {% for g in genres %}
+        <li {% if genre.slug == g.slug %}class="selected"{% endif %}>
+          <a href="{{ g.get_absolute_url }}">{{ g.title }}</a>
         </li>
       {% endfor %}
     </ul>
   </div>
   <div id="main" class="book-list">
-    <h1>{% if genre %}{{ genre.name }}{% else %}{% trans "Products" %}{% endif %}</h1>
+    <h1>{% if genre %}{{ genre.title }}{% else %}{% trans "Books" %}{% endif %}</h1>
     {% for book in books %}
       <div class="item">
         <a href="{{ book.get_absolute_url }}">

@@ -4,20 +4,20 @@ from cart.forms import CartAddProductForm
 from .recommender import Recommender
 from cart.cart import Cart
 from django.views.decorators.csrf import csrf_protect
-from django.middleware.csrf import get_token
+
 
 @csrf_protect
 def book_list(request, genre_slug=None):
     cart = Cart(request)
     genre = None
-    categories = Genre.objects.all()
+    genres = Genre.objects.all()
     books = Book.objects.filter(available=True)
     if genre_slug:
         language = request.LANGUAGE_CODE
         genre = get_object_or_404(Genre,
                                   translations__language_code=language,
                                   translations__slug=genre_slug)
-        books = books.filter(genre=genre)
+        books = genre.book_set.filter(available=True)
     return render(request,
                   'shop/book/list.html',
                   locals())
@@ -31,6 +31,8 @@ def book_detail(request, id, slug):
                              translations__language_code=language,
                              translations__slug=slug,
                              available=True)
+
+    genres = Genre.objects.filter(book=book)
 
     cart_add_form = CartAddProductForm()
     r = Recommender()

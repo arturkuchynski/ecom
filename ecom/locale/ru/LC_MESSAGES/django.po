@@ -1539,3 +1539,6 @@ msgstr "Жанры"
 #: shop/templates/shop/book/list.html:14
 msgid "All"
 msgstr "Все жанры"
+
+msgid "People who bought this also bought"
+msgstr "Пользователи, купившие эту книгу также предпочитают"

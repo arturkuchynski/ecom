@@ -55,7 +55,7 @@ class Book(TranslatableModel):
                                  default=None),
     )
 
-    genres = models.ManyToManyField(Genre, related_name='books',
+    genres = models.ManyToManyField(Genre,
                                     default=None,
                                     blank=True)
     isbn = ISBNField(unique=True,
