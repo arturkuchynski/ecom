@@ -20,7 +20,7 @@ This project is a prototype of real-world bookstore solution powered by Django 2
 - [x] Russian Localization (using default django i18n tools or ???)
 - [ ] Book Reviews and Ratings 
 - [x] Order details (PDF and CSV)
-- [ ] Site Contacts and Social Links
+- [x] Site Contacts and Social Links
 
 ### Could have
 - [ ] User email verification 
@@ -28,7 +28,7 @@ This project is a prototype of real-world bookstore solution powered by Django 2
 - [x] Email notifications (Redis tasks)
 - [ ] JavaScript (AJAX, jQuery, Carousel, etc.) for navigation, item search, animation and cart details
 - [ ] Responsive Design
-- [ ] Landing Page
+- [x] Landing Page
 - [ ] Book Catalog pages filters (by Author, Year, etc.)
 - [ ] Store recommendations and e-mail notifications in db
 - [ ] Wish List
