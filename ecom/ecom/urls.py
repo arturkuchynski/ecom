@@ -24,13 +24,14 @@ from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
 urlpatterns = i18n_patterns(
     path(_('admin/'), admin.site.urls),
+    path(_('landing/'), include(('landing.urls', 'landing'), namespace='landing')),
+    path(_(''), include(('users.urls', 'users'), namespace='users')),
+    path('', include('bookstore.urls', namespace='bookstore')),
     path(_('cart/'), include('cart.urls', namespace='cart')),
     path(_('orders/'), include('orders.urls', namespace='orders')),
     path(_('payment/'), include('payment.urls', namespace='payment')),
     path(_('promo_codes/'), include('promos.urls', namespace='promo_codes')),
     path(_('rosetta/'), include('rosetta.urls')),
-    path(_(''), include(('users.urls', 'users'), namespace='users')),
-    path('', include('bookstore.urls', namespace='bookstore')),
     path(_('paypal/'), include('paypal.standard.ipn.urls')),
 
 )

@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.contrib.admin import StackedInline
+from parler.admin import TranslatableAdmin
 from .models import *
-from parler.admin import TranslatableAdmin, TranslatableStackedInline
 
 
 class BookImageInline(StackedInline):

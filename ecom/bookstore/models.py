@@ -98,7 +98,6 @@ class Book(TranslatableModel):
                        args=[self.id, self.slug])
 
 
-# FIXME: type object has no attribute '_parler_meta'
 class BookImage(models.Model):
     book = models.OneToOneField(Book, on_delete=models.CASCADE, blank=True, null=True, default=None)
     image = models.ImageField(upload_to='img/books/%Y/%m/%d', blank=True, null=True, default=None, unique=True)

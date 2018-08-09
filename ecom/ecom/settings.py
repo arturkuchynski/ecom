@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'cart',
     'isbn_field',
     'orders',
+    'landing',
     'localflavor',
     'parler',
     'payment',
@@ -226,7 +227,7 @@ EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_HOST_USER = 'archeski.dk@gmail.com'
-EMAIL_HOST_PASSWORD = 'antonYouSuckAtHacking2018'
+EMAIL_HOST_PASSWORD = 'daruyjqagregqrgj'
 DEFAULT_FROM_EMAIL = 'archeski.dk@gmail.com'
 SERVER_EMAIL = 'archeski.dk@gmail.com'
 DEFAULT_TO_EMAIL = 'archeski.dk@gmail.com'

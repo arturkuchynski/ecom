@@ -1529,8 +1529,8 @@ msgstr "Добавить в корзину"
 
 #: shop/templates/shop/book/list.html:6
 #: shop/templates/shop/book/list.html:24
-msgid "Products"
-msgstr "Продукты"
+msgid "Books"
+msgstr "Книги"
 
 #: shop/templates/shop/book/list.html:11
 msgid "Genres"

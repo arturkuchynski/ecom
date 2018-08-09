@@ -1,9 +1,9 @@
 from django.shortcuts import render, get_object_or_404
+from django.views.decorators.csrf import csrf_protect
 from .models import Genre, Book
 from cart.forms import CartAddProductForm
 from .recommender import Recommender
 from cart.cart import Cart
-from django.views.decorators.csrf import csrf_protect
 
 
 @csrf_protect
@@ -13,6 +13,7 @@ def book_list(request, genre_slug=None):
     genres = Genre.objects.all()
     books = Book.objects.filter(available=True)
     if genre_slug:
+        # get current site language
         language = request.LANGUAGE_CODE
         genre = get_object_or_404(Genre,
                                   translations__language_code=language,
@@ -43,3 +44,15 @@ def book_detail(request, id, slug):
                   locals())
 
 
+def contacts(request):
+    cart = Cart(request)
+    return render(request,
+                  'contacts.html',
+                  locals())
+
+
+def delivery(request):
+    cart = Cart(request)
+    return render(request,
+                  'delivery.html',
+                  locals())

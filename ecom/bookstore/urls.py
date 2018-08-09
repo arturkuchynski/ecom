@@ -12,6 +12,8 @@ urlpatterns = [
          name='book_list_by_genre'),
     path('<int:id>/<slug:slug>/', views.book_detail,
          name='book_detail'),
+    path('contacts/', views.book_list, name='contacts'),
+    path('delivery/', views.book_list, name='delivery'),
 ]
 
 if settings.DEBUG:

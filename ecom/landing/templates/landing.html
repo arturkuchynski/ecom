@@ -1,0 +1,64 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+{#    <title>{{ site.name }} | Welcome</title>#}
+    <title>{% block title %}{% if page_title %}{{ page_title }} - {% endif %}
+    {{ site_name }}{% endblock %}</title>
+    <!-- Bootstrap-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+
+      <!-- Google Fonts -->
+    <link href='http://fonts.googleapis.com/css?family=Titillium+Web:100,100i,300,300i,400,400i,500,500i,700,700i
+                                              &amp;subset=cyrillic,cyrillic-ext,latin-ext' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Roboto+Condensed:100,100i,300,300i,400,400i,500,500i,700,700i
+                                              &amp;subset=cyrillic,cyrillic-ext,latin-ext' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Raleway:100,100i,300,300i,400,400i,500,500i,700,700i
+                                              &amp;subset=cyrillic,cyrillic-ext,latin-ext' rel='stylesheet' type='text/css'>
+
+
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+{#    <link rel="stylesheet" href="{% static 'css/bootstrap/bootstrap.min.css' %}">#}
+{#    <link rel="stylesheet" href="{% static 'css/responsive.css' %}">#}
+    <link rel="stylesheet" href="{% static 'css/landing.css' %}">
+    <style>
+  body {
+    background-image: url('../../static/static_dev/img/bg_image.jpg'); !important;
+  }
+</style>
+</head>
+<body>
+    <div class="general-container">
+        <div class="container top-container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 center text-center align-content-md-center align-middle">
+                    <h1 class="title text-center">Hello!<br>
+                    Our bookstore will be opened soon.<br>
+                    You can subscribe for the latest news using form below.<br>
+                    #staywoke</h1>
+                        <div class="center">
+                        <form action="" method="post" class="form-inline center"> {% csrf_token %} <!--Django tag-->
+                             <div class="form-group">
+                                 <label>Your email: </label>
+                                 <input type = "email" name="{{ form.email.name }}" class="form-control" >
+                             </div>
+                                <button type="submit" class="btn btn-primary" style="margin-left: 10px">Subscribe now</button>
+                        </form>
+
+                        <form method="post" action="{% url 'bookstore:book_list' %}" style="margin-top: 10px">  {% csrf_token %}
+                            <div class="form-group">
+                            <button type="submit" class="btn btn-primary"> Proceed to the main page</button>
+                            </div>
+                        </form>
+                            </div>
+                </div>
+            </div>
+        </div>
+    </div>
+           <!-- Bootstrap JS form CDN -->
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+
+</body>
+</html>

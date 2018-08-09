@@ -25,7 +25,7 @@
     {% for book in books %}
       <div class="item">
         <a href="{{ book.get_absolute_url }}">
-          <img src="{% if book.bookimage.image %}{{ book.bookimage.image.url }}{% else %}{% static "img/no_image.png" %}{% endif %}">
+          <img class="item-image" src="{% if book.bookimage.image %}{{ book.bookimage.image.url }}{% else %}{% static "img/no_image.png" %}{% endif %}">
         </a>
         <a href="{{ book.get_absolute_url }}">{{ book.name }}</a><br>
         ${{ book.price }}

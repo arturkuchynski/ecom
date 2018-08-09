@@ -93,11 +93,11 @@ msgstr ""
 
 #: shop/templates/shop/book/list.html:6
 #: shop/templates/shop/book/list.html:24
-msgid "Products"
+msgid "Books"
 msgstr ""
 
 #: shop/templates/shop/book/list.html:11
-msgid "Categories"
+msgid "Genrres"
 msgstr ""
 
 #: shop/templates/shop/book/list.html:14

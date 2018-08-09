@@ -1,5 +1,7 @@
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect, get_object_or_404
 from django.views.decorators.http import require_POST
+from django.views.decorators.csrf import csrf_protect
 from bookstore.models import Book
 from .cart import Cart
 from .forms import CartAddProductForm
@@ -26,10 +28,11 @@ def cart_remove(request, book_id):
     cart.remove(book)
     if cart:
         return redirect('cart:cart_detail')
-    return redirect('/')
+    return redirect('bookstore:book_list')
 
 
-# TODO: quantity to form
+# TODO: pass book quantity to form
+@login_required(login_url='users:user_login')
 def cart_detail(request):
     cart = Cart(request)
     for item in cart:

@@ -8,6 +8,8 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 		<!-- Bootstrap CSS -->
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+        <!-- Font Awesome -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 		<title>{% block title %}{% trans "My bookstore" %}{% endblock %}</title>
 		<link rel="shortcut icon" href="{%  static 'favicon.ico' %}">
 		<link href="{% static "css/base.css" %}" rel="stylesheet">
@@ -60,7 +62,8 @@
 				</div>
 			</div>
 		</nav>
-		<div class="container"  id="content">
+
+		<div class="container" id="content">
          {% if messages %}
             {% for message in messages %}
                 <div class="alert alert-warning alert-dismissable fade in show" data-auto-dismiss="4000" role="alert">
@@ -75,6 +78,66 @@
 			{% block content %}
 			{% endblock %}
 		</div>
+
+        <footer id="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-3 footer-columns">
+                    <h5>Get started</h5>
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">Books</a></li>
+                        {% if user.is_authenticated %}
+                            <li><a href="#">Log out</a></li>
+                        {% else %}
+                            <li><a href="#">Register</a></li>
+                            <li><a href="#">Log in</a></li>
+                        {% endif %}
+                    </ul>
+                </div>
+                <div class="col-sm-3 footer-columns">
+                    <h5>About us</h5>
+                    <ul>
+                        <li><a href="#">Company Information</a></li>
+                        <li><a href="#">Contact us</a></li>
+                        <li><a href="#">Reviews</a></li>
+                    </ul>
+                </div>
+                <div class="col-sm-3 footer-columns">
+                    <h5>Legal</h5>
+                    <ul>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Terms of Use</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3 col-sm-6 footer-columns">
+                <div class="footer-newsletter">
+                    <h2 class="footer-wid-title">Newsletter</h2>
+                    <p>Sign up to our newsletter and get exclusive deals you wont find anywhere else straight to your inbox!</p>
+                    <div class="newsletter-form">
+                        <form action="" method="post">{% csrf_token %}
+                            <input type="email" class="form-control small" name="{{ form.email.name }}" placeholder="Type your email">
+                            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                            <button type="submit" class="btn btn-secondary">Subscribe Now</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </div>
+        <div class="social-networks">
+            <a href="#" class="twitter"><i class="fa fa-twitter"></i></a>
+            <a href="#" class="facebook"><i class="fa fa-facebook-official"></i></a>
+            <a href="#" class="vk"><i class="fa fa-vk"></i></a>
+            <a href="#" class="telegram"><i class="fa fa-telegram"></i></a>
+            <a href="#" class="instagram"><i class="fa fa-instagram"></i></a>
+        </div>
+        <div class="footer-copyright">
+            <p>© 2018 Copyright Text </p>
+        </div>
+    </footer>
+
 		<!-- Optional JavaScript -->
 		<!-- jQuery first, then Popper.js, then Bootstrap JS -->
 		<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

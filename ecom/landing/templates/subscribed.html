@@ -1,0 +1,56 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+{#    <title>{{ site.name }} | Welcome</title>#}
+    <title>{% block title %}{% if page_title %}{{ page_title }} - {% endif %}
+    {{ site_name }}{% endblock %}</title>
+    <!-- Bootstrap-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css">
+
+      <!-- Google Fonts -->
+    <link href='http://fonts.googleapis.com/css?family=Titillium+Web:100,100i,300,300i,400,400i,500,500i,700,700i
+                                              &amp;subset=cyrillic,cyrillic-ext,latin-ext' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Roboto+Condensed:100,100i,300,300i,400,400i,500,500i,700,700i
+                                              &amp;subset=cyrillic,cyrillic-ext,latin-ext' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Raleway:100,100i,300,300i,400,400i,500,500i,700,700i
+                                              &amp;subset=cyrillic,cyrillic-ext,latin-ext' rel='stylesheet' type='text/css'>
+
+
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+{#    <link rel="stylesheet" href="{% static 'css/bootstrap/bootstrap.min.css' %}">#}
+{#    <link rel="stylesheet" href="{% static 'css/responsive.css' %}">#}
+    <link rel="stylesheet" href="{% static 'css/landing.css' %}">
+    <style>
+  body {
+    background-image: url('../../static/static_dev/img/bg_image.jpg'); !important;
+  }
+</style>
+
+</head>
+<body>
+    <div class="general-container">
+        <div class="container top-container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 center text-center align-content-md-center align-middle">
+                    <h1 class="title text-center">Congratulations!<br>
+                    You have been subscribed for our newsletter<br>
+                    #staywoke</h1>
+                        <div class="center">
+                        <form method="post" action="{% url 'bookstore:book_list' %}" style="margin-top: 10px">  {% csrf_token %}
+                            <div class="form-group">
+                            <button type="submit" class="btn btn-primary"> Proceed to the main page</button>
+                            </div>
+                        </form>
+                            </div>
+                </div>
+            </div>
+        </div>
+    </div>
+           <!-- Bootstrap JS form CDN -->
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+</body>
+</html>

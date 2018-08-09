@@ -9,7 +9,6 @@ r = redis.StrictRedis(host=settings.REDIS_HOST,
 
 
 class Recommender(object):
-
     def get_book_key(self, id):
         return 'book:{}:purchased_with'.format(id)
 
