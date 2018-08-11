@@ -18,7 +18,6 @@
 	<body>
 		<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 			<a class="navbar-brand" href="{% url "bookstore:book_list" %}">{% trans "My bookstore" %}</a>
-			{#     <a href="/" class="logo">{% trans "My bookstore" %}</a>#}
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
 			</button>
@@ -32,16 +31,15 @@
 					<a class="nav-item nav-link languages" href="/{{ language.code }}/" {% if language.code == LANGUAGE_CODE %} class="selected"{% endif %}>
 					 {% csrf_token %}
                     {{ language.name_local }}
-
 					</a>
 					{% endfor %}
 					<div class="nav-item cart">
 						{% with total_items=cart|length %}
 						{% if cart|length > 0 %}
-						{% trans "Your cart" %}:
 						<a class="nav-link" href="{% url "cart:cart_detail" %}">
+                        <i class="fa fa-shopping-cart"></i>
 						{% blocktrans with total_items_plural=total_items|pluralize  total_price=cart.get_total_price %}
-						{{ total_items }} item{{ total_items_plural }},
+						{{ total_items }} {{ total_items_plural }}:
 						${{ total_price }}
 						{% endblocktrans %}
 						</a>

@@ -21,7 +21,6 @@ def cart_add(request, book_id):
                  update_quantity=cd['update'])
     return redirect('cart:cart_detail')
 
-
 def cart_remove(request, book_id):
     cart = Cart(request)
     book = get_object_or_404(Book, id=book_id)

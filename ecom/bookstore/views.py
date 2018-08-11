@@ -13,7 +13,6 @@ def book_list(request, genre_slug=None):
     genres = Genre.objects.all()
     books = Book.objects.filter(available=True)
     if genre_slug:
-        # get current site language
         language = request.LANGUAGE_CODE
         genre = get_object_or_404(Genre,
                                   translations__language_code=language,
@@ -23,7 +22,7 @@ def book_list(request, genre_slug=None):
                   'shop/book/list.html',
                   locals())
 
-
+@csrf_protect
 def book_detail(request, id, slug):
     cart = Cart(request)
     language = request.LANGUAGE_CODE
@@ -43,14 +42,14 @@ def book_detail(request, id, slug):
                   'shop/book/detail.html',
                   locals())
 
-
+@csrf_protect
 def contacts(request):
     cart = Cart(request)
     return render(request,
                   'contacts.html',
                   locals())
 
-
+@csrf_protect
 def delivery(request):
     cart = Cart(request)
     return render(request,

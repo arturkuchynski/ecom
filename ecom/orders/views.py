@@ -1,5 +1,7 @@
 from django.urls import reverse
 from django.shortcuts import render, redirect
+from django.views.decorators.csrf import csrf_protect
+
 from .models import OrderItem
 from .forms import OrderCreateForm
 from cart.cart import Cart
@@ -12,7 +14,7 @@ from django.http import HttpResponse
 from django.template.loader import render_to_string
 import weasyprint
 
-
+@csrf_protect
 def order_create(request):
     cart = Cart(request)
     if request.method == 'POST':
@@ -47,7 +49,7 @@ def order_create(request):
                   'orders/order/create.html',
                   {'cart': cart, 'form': form})
 
-
+@csrf_protect
 @staff_member_required
 def admin_order_detail(request, order_id):
     order = get_object_or_404(Order, id=order_id)
@@ -55,7 +57,7 @@ def admin_order_detail(request, order_id):
                   'admin/orders/order/detail.html',
                   {'order': order})
 
-
+@csrf_protect
 @staff_member_required
 def admin_order_pdf(request, order_id):
     order = get_object_or_404(Order, id=order_id)

@@ -4,7 +4,7 @@ from django.urls import reverse
 from django.shortcuts import render, get_object_or_404
 from paypal.standard.forms import PayPalPaymentsForm
 from orders.models import Order
-from django.views.decorators.csrf import csrf_exempt
+from django.views.decorators.csrf import csrf_exempt, csrf_protect
 
 
 @csrf_exempt
@@ -16,7 +16,7 @@ def payment_done(request):
 def payment_canceled(request):
     return render(request, 'payment/canceled.html')
 
-
+@csrf_protect
 def payment_process(request):
     order_id = request.session.get('order_id')
     order = get_object_or_404(Order, id=order_id)
