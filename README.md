@@ -3,7 +3,7 @@
 
 This project is a prototype of real-world bookstore solution powered by Django 2.
 
-### Using MoSCoW method of development prioritization of the dev state of the project, I define project requirements for myself as follows:
+### According to [MoSCoW](https://en.wikipedia.org/wiki/MoSCoW_method) method of development prioritization, the following list of project features was written:
 
 ### Must have
 - [x] Bookstore Models Hierarchy
